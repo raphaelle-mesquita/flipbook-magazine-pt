@@ -32,18 +32,6 @@ body {
   position: relative;
   border-radius: 16px;
   overflow: hidden;
-
-
-.flipbook-wrapper {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-#flipbook {
-  width: 100% !important;
-  height: auto !important;
-
 }
 
 /* Páginas */

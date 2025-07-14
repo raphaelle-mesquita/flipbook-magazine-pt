@@ -49,11 +49,11 @@ const flip = $('#flipbook');
 function adjustFlipbook() {
   const container = document.querySelector('.flipbook-wrapper');
   const width = container.clientWidth;
-  const height = width; // mantém quadrado, 1:1
+  const height = width * 0.65;  // proporção mais "retangular", ajustável
 
   flip.turn('size', width, height);
 
-  // Ajusta o display baseado na tela:
+  // Alterna entre páginas simples e duplas conforme a tela:
   if (width < 768) {
     flip.turn('display', 'single');
   } else {
@@ -62,8 +62,8 @@ function adjustFlipbook() {
 }
 
 flip.turn({
-  width: 800,   // valor inicial temporário
-  height: 800,
+  width: 800,       // valor inicial
+  height: 520,      // valor inicial
   autoCenter: true,
   duration: 300,
   display: 'double'

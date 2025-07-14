@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background: transparent;
+  overflow: hidden;
+}
+
+.flipbook-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.flipbook {
+  width: 1200px;
+  height: 600px;
+  max-width: 90vw;
+  max-height: 90vh;
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+/* Páginas */
+.page,
+.hard {
+  width: 50%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: none;
+  overflow: hidden;
+}
+
+/* BACKGROUNDS DAS PÁGINAS */
+.page-01 { background-image: url("images/01.jpg"); }
+.page-02 { background-image: url("images/02.jpg"); }
+.page-03 { background-image: url("images/03.jpg"); }
+.page-04 { background-image: url("images/04.jpg"); }
+.page-05 { background-image: url("images/05.jpg"); }
+.page-06 { background-image: url("images/06.jpg"); }
+.page-07 { background-image: url("images/07.jpg"); }
+.page-08 { background-image: url("images/08.jpg"); }
+.page-09 { background-image: url("images/09.jpg"); }
+.page-10 { background-image: url("images/10.jpg"); }
+.page-11 { background-image: url("images/11.jpg"); }
+.page-12 { background-image: url("images/12.jpg"); }
+.page-13 { background-image: url("images/13.jpg"); }
+.page-14 { background-image: url("images/14.jpg"); }
+.page-15 { background-image: url("images/15.jpg"); }
+.page-16 { background-image: url("images/16.jpg"); }
+
+/* Navegação */
+.flipbook-nav {
+  margin-top: 12px;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+/* Estilo dos botões de navegação e botão view PDF */
+.flipbook-nav button,
+.view-pdf-button {
+  background: transparent;
+  color: white;
+  font-size: 18px;
+  padding: 8px 20px;
+  border: 2px solid white;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.flipbook-nav button:hover,
+.view-pdf-button:hover {
+  background: white;
+  color: black;
+}
+
+/* Responsivo para Mobile */
+@media (max-width: 768px) {
+  .flipbook {
+    width: 400px;
+    height: 400px;
+    max-width: 90vw;
+    max-height: 90vw;
+  }
+
+  .flipbook-nav button,
+  .view-pdf-button {
+    font-size: 16px;
+    padding: 6px 16px;
+  }
+}

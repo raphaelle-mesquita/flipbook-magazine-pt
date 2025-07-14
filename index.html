@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Ground Controls</title>
+</head>
+
+<body>
+  <div class="flipbook-wrapper">
+    <div id="flipbook" class="flipbook">
+      <div class="hard page-01"></div>
+      <div class="hard page-02"></div>
+
+      <div class="page page-03"></div>
+      <div class="page page-04"></div>
+      <div class="page page-05"></div>
+      <div class="page page-06"></div>
+      <div class="page page-07"></div>
+      <div class="page page-08"></div>
+      <div class="page page-09"></div>
+      <div class="page page-10"></div>
+      <div class="page page-11"></div>
+      <div class="page page-12"></div>
+      <div class="page page-13"></div>
+      <div class="page page-14"></div>
+
+      <div class="hard page-15"></div>
+      <div class="hard page-16"></div>
+    </div>
+
+    <div class="flipbook-nav">
+      <button id="prevPage">&#8592;</button> <!-- ← -->
+      <button id="nextPage">&#8594;</button> <!-- → -->
+      <a href="https://heyzine.com/flip-book/21f840677b.html" target="_blank" class="view-pdf-button">View PDF</a>
+    </div>
+  </div>
+
+  <script src="jquery.js"></script>
+  <script src="turn.js"></script>
+
+  <script>
+    $(document).ready(function () {
+      const flip = $('#flipbook');
+
+      function adjustFlipbook() {
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+
+        if (width < 768 && height > width) {
+          // 📱 Mobile em pé (portrait)
+          flip.turn('size', 400, 400);
+          flip.turn('display', 'single');
+
+        } else if (width < 1024 && width > height) {
+          // 📱 Mobile deitado (landscape)
+          flip.turn('size', 500, 300);
+          flip.turn('display', 'double');
+
+        } else {
+          // 🖥 Desktop
+          flip.turn('size', 1200, 600);
+          flip.turn('display', 'double');
+        }
+      }
+
+      flip.turn({
+        width: 1200,
+        height: 600,
+        autoCenter: true,
+        duration: 300,
+        display: 'double'
+      });
+
+      adjustFlipbook();
+      $(window).resize(adjustFlipbook);
+
+      // Efeito teaser
+      let teaserCount = 0;
+      const maxTeaser = 3;
+      const flipTeaser = setInterval(() => {
+        teaserCount++;
+        flip.turn('next');
+        if (teaserCount >= maxTeaser) {
+          clearInterval(flipTeaser);
+          setTimeout(() => {
+            flip.turn('page', 1);
+          }, 1000);
+        }
+      }, 900);
+
+      // Botões de navegação
+      document.getElementById("prevPage").addEventListener("click", () => {
+        flip.turn("previous");
+      });
+
+      document.getElementById("nextPage").addEventListener("click", () => {
+        flip.turn("next");
+      });
+
+      // Botão de Fullscreen
+      const fullscreenButton = document.getElementById("fullscreenBtn");
+      if (fullscreenButton) {
+        fullscreenButton.addEventListener("click", () => {
+          const wrapper = document.querySelector(".flipbook-wrapper");
+          if (wrapper.requestFullscreen) {
+            wrapper.requestFullscreen();
+          } else if (wrapper.webkitRequestFullscreen) {
+            wrapper.webkitRequestFullscreen();
+          } else if (wrapper.msRequestFullscreen) {
+            wrapper.msRequestFullscreen();
+          }
+        });
+      }
+    });
+  </script>
+
+</body>
+
+</html>

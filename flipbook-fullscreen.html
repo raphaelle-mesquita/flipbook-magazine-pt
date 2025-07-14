@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flipbook Fullscreen</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #000; /* muda aqui se quiser outra cor */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    #flipbook {
+      width: 90vw;
+      height: 90vh;
+      background: transparent;
+    }
+
+    .page {
+      width: 100%;
+      height: 100%;
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    /* Responsivo Mobile */
+    @media (max-width: 768px) {
+      #flipbook {
+        width: 95vw;
+        height: 85vh;
+      }
+    }
+
+    /* Ajuste especial mobile landscape */
+    @media (max-width: 1024px) and (orientation: landscape) {
+      #flipbook {
+        width: 90vw;
+        height: 80vh;
+      }
+    }
+
+    /* Botão voltar */
+    .back-button {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      padding: 10px 20px;
+      background: #fff;
+      color: #000;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      z-index: 999;
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+
+<a href="index.html" class="back-button">← Voltar</a>
+
+<div id="flipbook">
+  <div class="page" style="background-image: url('https://cdn.prod.website-files.com/6706398dc0521531a57c7a75/67f53c5dca86ded4c3be7167_AF_21X21CM_GROUNDCONTROLS_page-0001.jpg');"></div>
+  <div class="page" style="background-image: url('https://cdn.prod.website-files.com/6706398dc0521531a57c7a75/67f53ca379802f2b4121a2b6_AF_21X21CM_GROUNDCONTROLS_page-0002.jpg');"></div>
+  <!-- Adicione aqui o resto das suas páginas -->
+</div>
+
+<script src="jquery.js"></script>
+<script src="turn.js"></script>
+
+<script>
+  $(document).ready(function () {
+    $('#flipbook').turn({
+      width: window.innerWidth * 0.9,
+      height: window.innerHeight * 0.9,
+      autoCenter: true,
+      acceleration: true,
+      gradients: true,
+      elevation: 50,
+      duration: 800,
+      display: 'double'
+    });
+
+    $(window).resize(function () {
+      $('#flipbook').turn('size', window.innerWidth * 0.9, window.innerHeight * 0.9);
+    });
+  });
+</script>
+
+</body>
+
+</html>

@@ -43,39 +43,34 @@
 
   <script>
     $(document).ready(function () {
-      const flip = $('#flipbook');
+        
+const flip = $('#flipbook');
 
-      function adjustFlipbook() {
-        const width = window.innerWidth;
-        const height = window.innerHeight;
+function adjustFlipbook() {
+  const container = document.querySelector('.flipbook-wrapper');
+  const width = container.clientWidth;
+  const height = width; // mantém quadrado, 1:1
 
-        if (width < 768 && height > width) {
-          // 📱 Mobile em pé (portrait)
-          flip.turn('size', 400, 400);
-          flip.turn('display', 'single');
+  flip.turn('size', width, height);
 
-        } else if (width < 1024 && width > height) {
-          // 📱 Mobile deitado (landscape)
-          flip.turn('size', 500, 300);
-          flip.turn('display', 'double');
+  // Ajusta o display baseado na tela:
+  if (width < 768) {
+    flip.turn('display', 'single');
+  } else {
+    flip.turn('display', 'double');
+  }
+}
 
-        } else {
-          // 🖥 Desktop
-          flip.turn('size', 1200, 600);
-          flip.turn('display', 'double');
-        }
-      }
+flip.turn({
+  width: 800,   // valor inicial temporário
+  height: 800,
+  autoCenter: true,
+  duration: 300,
+  display: 'double'
+});
 
-      flip.turn({
-        width: 1200,
-        height: 600,
-        autoCenter: true,
-        duration: 300,
-        display: 'double'
-      });
-
-      adjustFlipbook();
-      $(window).resize(adjustFlipbook);
+adjustFlipbook();
+$(window).resize(adjustFlipbook);
 
       // Efeito teaser
       let teaserCount = 0;

@@ -11,9 +11,11 @@
 <body>
   <div class="flipbook-wrapper">
     <div id="flipbook" class="flipbook">
+      <!-- CAPAS INICIAIS -->
       <div class="hard page-01"></div>
       <div class="hard page-02"></div>
 
+      <!-- MIÔLO -->
       <div class="page page-03"></div>
       <div class="page page-04"></div>
       <div class="page page-05"></div>
@@ -26,15 +28,24 @@
       <div class="page page-12"></div>
       <div class="page page-13"></div>
       <div class="page page-14"></div>
+      <div class="page page-15"></div>
+      <div class="page page-16"></div>
+      <div class="page page-17"></div>
+      <div class="page page-18"></div>
+      <div class="page page-19"></div>
+      <div class="page page-20"></div>
+      <div class="page page-21"></div>
+      <div class="page page-22"></div>
 
-      <div class="hard page-15"></div>
-      <div class="hard page-16"></div>
+      <!-- CAPAS FINAIS -->
+      <div class="hard page-23"></div>
+      <div class="hard page-24"></div>
     </div>
 
     <div class="flipbook-nav">
-      <button id="prevPage">&#8592;</button> <!-- ← -->
-      <button id="nextPage">&#8594;</button> <!-- → -->
-      <a href="https://heyzine.com/flip-book/2b6950c532.html" target="_blank" class="view-pdf-button">Ver PDF</a>
+      <button id="prevPage">&#8592;</button>
+      <button id="nextPage">&#8594;</button>
+      <a href="https://heyzine.com/flip-book/2b6950c532.html" target="_blank" class="view-pdf-button">View PDF</a>
     </div>
   </div>
 
@@ -50,28 +61,25 @@
         const height = window.innerHeight;
 
         if (width < 768 && height > width) {
-          // 📱 Mobile em pé (portrait)
           flip.turn('size', 400, 400);
           flip.turn('display', 'single');
-
         } else if (width < 1024 && width > height) {
-          // 📱 Mobile deitado (landscape)
           flip.turn('size', 500, 300);
           flip.turn('display', 'double');
-
         } else {
-          // 🖥 Desktop
           flip.turn('size', 1200, 600);
           flip.turn('display', 'double');
         }
       }
 
+      // Inicializa o flipbook com total de 24 páginas
       flip.turn({
         width: 1200,
         height: 600,
         autoCenter: true,
         duration: 300,
-        display: 'double'
+        display: 'double',
+        pages: 24 // ✅ forçando total correto
       });
 
       adjustFlipbook();
@@ -100,24 +108,18 @@
         flip.turn("next");
       });
 
-      // Botão de Fullscreen
+      // Fullscreen
       const fullscreenButton = document.getElementById("fullscreenBtn");
       if (fullscreenButton) {
         fullscreenButton.addEventListener("click", () => {
           const wrapper = document.querySelector(".flipbook-wrapper");
-          if (wrapper.requestFullscreen) {
-            wrapper.requestFullscreen();
-          } else if (wrapper.webkitRequestFullscreen) {
-            wrapper.webkitRequestFullscreen();
-          } else if (wrapper.msRequestFullscreen) {
-            wrapper.msRequestFullscreen();
-          }
+          if (wrapper.requestFullscreen) wrapper.requestFullscreen();
+          else if (wrapper.webkitRequestFullscreen) wrapper.webkitRequestFullscreen();
+          else if (wrapper.msRequestFullscreen) wrapper.msRequestFullscreen();
         });
       }
     });
   </script>
 
 </body>
-
 </html>
-
